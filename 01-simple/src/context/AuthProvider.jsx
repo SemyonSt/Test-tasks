@@ -1,31 +1,40 @@
 import React, {
-    useMemo, useCallback,
+    useMemo, useCallback, useState, 
+    // useEffect
 } from 'react';
 import { useNavigate } from "react-router-dom";
 import AuthContext from "./AuthContext";
 
-const AuthProvider = ({ children }) => {
 
+// const useLogoutEffect = () => {
+//     const navigate = useNavigate()
+
+//     useEffect(() => {
+//         navigate('/');
+//     }, [navigate]);
+// };
+
+const AuthProvider = ({ children }) => {
+    const [logedIn, setLogedIn] = useState(false)
     const navigate = useNavigate()
 
-    const login = useCallback((data) => {
-        localStorage.clear();
-        localStorage.setItem('userInfo', data);
-        navigate('/profile')
-        console.log(localStorage)
-    }, [navigate]);
-
     const logout = useCallback(() => {
-        localStorage.removeItem('userInfo')
+        setLogedIn(false);
+        // eslint-disable-next-line react-hooks/rules-of-hooks
         navigate('/')
     }, [navigate])
 
-
+    const login = useCallback((data) => {
+        setLogedIn(true)
+        navigate('/profile')
+        
+    }, [navigate]);
 
     const contextValue = useMemo(() => ({
+        logedIn,
         login,
         logout,
-    }), [login, logout]);
+    }), [logedIn, login, logout]);
 
     return (
         <AuthContext.Provider value={contextValue}>
