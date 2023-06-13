@@ -56,7 +56,6 @@ const Login = () => {
     });
 
 
-    console.log(formik.errors.firstName, formik.errors.password)
     return (
 
         <div className={errClass}>
@@ -113,7 +112,12 @@ const Login = () => {
                         Submit
                     </button>
                 </form>
-                <h3 className='help' onClick={() => setShowHelp(!showHelp)} type="btn">{showHelp ? 'Help' : 'login – developer21, password – 123456'}</h3>
+                <h3 className='help'
+                    onClick={() => setShowHelp(!showHelp)}
+                    type="btn"
+                >
+                    {showHelp ? 'Help' : `login – ${user.firstName}, password – ${user.password}`}
+                </h3>
             </div>
         </div>
 

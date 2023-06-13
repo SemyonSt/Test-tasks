@@ -1,4 +1,4 @@
-*{
+* {
   margin: 0;
   padding: 0;
   font-family: 'Poppins', sans-serif;
@@ -18,7 +18,7 @@ section {
 .form-box {
   position: absolute;
   background: transparent;
-  border: 2px solid rgba(255,255,255,0.5);
+  border: 2px solid rgba(255, 255, 255, 0.5);
   border-radius: 20px;
   backdrop-filter: blur(15px);
   width: 400px;
@@ -47,6 +47,19 @@ section {
 
 }
 
+h1 {
+  font-size: 2em;
+  color: #ffffff;
+  text-shadow:
+    -1px -1px 0 rgb(27, 79, 219),
+    1px -1px 0 rgb(27, 79, 219),
+    -1px 1px 0 rgb(27, 79, 219),
+    1px 1px 0 rgb(27, 79, 219);
+  text-align: center;
+  margin-bottom: 1em;
+}
+
+
 h2 {
   font-size: 2em;
   color: #fff;
@@ -71,8 +84,9 @@ h2 {
   transition: .5s;
 
 
-  
+
 }
+
 .invalid-form {
   position: absolute;
   top: 50%;
@@ -84,11 +98,12 @@ h2 {
   transition: .5s;
   color: red;
   font-weight: bolder;
-  text-align: center; /* добавлено */
+  text-align: center;
+  /* добавлено */
 }
 
-input:focus ~ label,
-input:valid ~ label {
+input:focus~label,
+input:valid~label {
   top: -5px;
 }
 
@@ -123,15 +138,16 @@ input:valid ~ label {
   font-weight: 600;
   cursor: pointer;
 }
+
 .btn:active {
   background-color: gray;
   box-shadow: none;
 }
 
-.help{
+.help {
   text-align: center;
   color: #f3e8e8;
-  
+
   margin-top: 10px;
   animation: blink-animation 2s infinite;
   cursor: pointer;
@@ -139,13 +155,18 @@ input:valid ~ label {
 
 @keyframes blink-animation {
   0% {
-    opacity: 1; /* задаем начальное значение свойства opacity */
+    opacity: 1;
+    /* задаем начальное значение свойства opacity */
   }
+
   50% {
-    opacity: 0.1; /* задаем промежуточное значение свойства opacity */
+    opacity: 0.1;
+    /* задаем промежуточное значение свойства opacity */
   }
+
   100% {
-    opacity: 1; /* задаем конечное значение свойства opacity */
+    opacity: 1;
+    /* задаем конечное значение свойства opacity */
   }
 }
 

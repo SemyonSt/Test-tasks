@@ -8,17 +8,19 @@ import Login from './Login';
 import Error from './Error';
 import Profile from './Profile';
 
+
+const PrivateRoute = ({ children }) => {
+    const auth = useAuth();
+
+    console.log(auth.logedIn)
+    
+    return (
+        auth.login ? children  : auth.logout
+    );
+};
 const Main = () => {
-
-    const PrivateRoute = ({ children }) => {
-        const auth = useAuth();
-        
-        return (
-            auth.logedIn ? children : auth.logout()
-        );
-    };
-
-
+    const auth = useAuth();
+    console.log(auth.logedIn)
     return (
         <section>
             <Routes>
@@ -29,8 +31,6 @@ const Main = () => {
                         <PrivateRoute>
                             <Profile />
                         </PrivateRoute>
-
-
                     )} />
             </Routes>
         </section>
