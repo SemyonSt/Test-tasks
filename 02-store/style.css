@@ -1,0 +1,432 @@
+:root {
+  --var-body-bg: #fff;
+  --var-body-fc: #333;
+  --var-header-bg: #eee;
+  --var-header-fc: #252B42;
+  --var-card-fc: #eee;
+  --var-form-bg: #fff;
+
+}
+
+.dark {
+  --var-body-bg: #333;
+  --var-body-fc: #fff;
+  --var-header-bg: #666;
+  --var-header-fc: #fff;
+  --var-card-fc: #5a5b5e;
+  --var-form-bg: #666;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: 'Monserat', sans-serif;
+  background-color: var(--var-body-bg);
+  color: var(--var-body-fc);
+  line-height: 1.5;
+  font-size: 1rem;
+}
+
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, .1);
+  z-index: 9999;
+  background-color: var(--var-header-bg);
+  border-radius: 0 0 20px 20px;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 30px 15px;
+  box-sizing: border-box;
+  max-width: 1333px;
+  margin: 0 auto;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-decoration: none;
+  color: var(--var-body-fc);
+  font-family: 'Open Sans';
+}
+
+.menu {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  align-items: center;
+}
+
+.menu ul {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  align-items: center;
+}
+
+.menu li {
+  margin-right: 1rem;
+
+}
+
+.menu a {
+  color: var(--var-header-fc);
+  text-decoration: none;
+  transition: color .2s ease-in-out;
+}
+
+.menu a:hover {
+  color: #f00;
+}
+
+/* Кнопка-слайдер для переключения темы*/
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+
+.switch input {
+  display: none;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked+.slider {
+  background-color: #2196F3;
+}
+
+input:focus+.slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked+.slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+/*----------------*/
+
+/*----------------*/
+main {
+  padding: 2rem 0;
+  padding-top: 100px;
+
+
+  overflow: hidden;
+  min-height: 100vh;
+}
+
+/*----------------*/
+
+
+
+/*Карточка товара*/
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  align-items: center;
+  justify-content: center;
+  padding: 30px 15px;
+  box-sizing: border-box;
+  max-width: 1333px;
+
+}
+
+.card {
+  margin: 1rem;
+  padding: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  text-align: center;
+  max-width: 300px;
+  height: 425px;
+
+  display: inline-block;
+  background-color: var(--var-card-fc);
+
+}
+
+.w-500 {
+  width: 300px;
+  height: 200px;
+}
+
+.card img {
+  max-width: auto;
+  max-height: 100%;
+  margin-bottom: 1rem;
+}
+
+.head-shop {
+  margin-top: 10px;
+  margin-bottom: 5px;
+  text-align: center;
+  font-size: 20px;
+  font-family: serif;
+
+}
+
+.card h3 {
+  margin-top: 1rem;
+  margin-bottom: .5rem;
+}
+
+.cards h2 {
+
+  margin-top: 100px;
+}
+
+.description {
+  height: 90px;
+  margin-bottom: 5px;
+
+  overflow-x: hidden;
+  white-space: pre-wrap;
+  text-overflow: ellipsis;
+}
+
+.date {
+
+  margin-bottom: 1rem;
+  padding-top: 2px;
+  padding-bottom: 3px;
+  font-size: 70%;
+
+  overflow-x: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  margin-bottom: 2px;
+}
+
+.card button {
+  background-color: #f00;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: .6rem 3rem;
+  cursor: pointer;
+  transition: background-color .2s ease-in-out;
+
+}
+
+.card button.buy-btn {
+  margin-top: 15px;
+}
+
+.card button:hover {
+  background-color: #d00;
+}
+
+/*----------------*/
+
+
+
+/*Подвал*/
+
+.categories-list {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 5px;
+  box-sizing: border-box;
+  max-width: 1333px;
+  margin: 0 auto;
+}
+
+.categories-list ul {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  align-items: center;
+
+}
+
+.categories-list li {
+  margin-right: 1rem;
+
+}
+
+.categories-list a {
+  color: var(--var-header-fc);
+  text-decoration: none;
+  transition: color .2s ease-in-out;
+}
+
+footer {
+  margin-top: auto;
+  padding: 1rem 0;
+
+  box-shadow: 0 2px 4px rgba(0, 0, 0, .1);
+  background-color: var(--var-header-bg);
+}
+
+/*----------------*/
+
+/*  Форма заказа  */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, .6);
+  z-index: 9998;
+  display: none;
+}
+
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: var(--var-form-bg);
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 2rem;
+  max-width: 600px;
+  width: 100%;
+  max-height: 80%;
+  overflow-y: auto;
+  text-align: center;
+}
+
+.modal h2 {
+  margin-bottom: 1rem;
+  color: var(--var-body-fc);
+}
+
+.form-group {
+  margin-bottom: 1rem;
+  text-align: left;
+  color: var(--var-body-fc);
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: .5rem;
+  font-weight: bold;
+}
+
+.color-options {
+  display: flex;
+  justify-content: space-between;
+  margin-top: .5rem;
+}
+
+.color-options label {
+  display: flex;
+  align-items: center;
+  margin-right: 1rem;
+}
+
+.color-options input[type="radio"] {
+  margin-right: .5rem;
+}
+
+textarea {
+  width: 100%;
+  height: 100px;
+  padding: .5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: none;
+}
+
+button[type="submit"],
+.close-btn {
+  background-color: #f00;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: .5rem 1rem;
+  cursor: pointer;
+  transition: background-color .2s ease-in-out;
+}
+
+button[type="submit"]:hover,
+.close-btn:hover {
+  background-color: #d00;
+}
+
+/*----------------*/
+
+
+
+/*  Кнопка скрола к верху страницы  */
+.scroll-to-top-btn {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 9999;
+  width: 50px;
+  height: 50px;
+  background-color: #67a7b3;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  font-size: 12px;
+  text-align: center;
+  line-height: 50px;
+  cursor: pointer;
+}
+
+.scroll-to-top-btn:hover {
+  background-color: #555;
+}
+
+.scroll-to-top-btn:focus {
+  outline: none;
+}
+
+/*----------------*/
