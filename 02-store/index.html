@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <section>
+        <header class="header">
+            <div class="container">
+                <a href="#" class="logo">Custom Store</a>
+                <nav class="menu">
+                    <ul id="categories-list">
+                        <li><a href="#category1">Мужчины</a></li>
+                        <li><a href="#category2">Женщины</a></li>
+                        <li><a href="#category3">Дети</a></li>
+                    </ul>
+                    <div>
+                        <label class="switch">
+                            <input id="theme-toggle" type="checkbox">
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
+                    <div>
+                        <button class="scroll-to-top-btn" aria-label="Вернуться наверх">
+                            <p>Вверх</p>
+                            <i class="fas fa-arrow-up"></i>
+                        </button>
+                    </div>
+                </nav>
+            </div>
+        </header>
+    </section>
+
+    <div class="page">
+        <main>
+            <div class="cards">
+
+                <div class="head-shop">
+                    <h1>В нашем магазине вы можете купить мужскую, женскию и детскую одежду ч/б цвета и цвета на заказ.
+                    </h1>
+                </div>
+
+                <div id="category1">
+                    <h2>Мужчины</h2>
+                    <hr>
+                </div>
+
+                <div id="category2">
+                    <h2>Женщины</h2>
+                    <hr>
+                </div>
+
+                <div id="category3">
+                    <h2>Дети</h2>
+                    <hr>
+                </div>
+            </div>
+    </div>
+    </main>
+
+
+    <footer>
+        <div class="footer">
+            <ul class="categories-list">
+                <li><a href="#category1">Мужчины</a></li>
+                <li><a href="#category2">Женщины</a></li>
+                <li><a href="#category3">Дети</a></li>
+            </ul>
+        </div>
+    </footer>
+    </div>
+
+    <div class="overlay">
+        <div class="modal">
+            <h2>Форма заказа</h2>
+            <form>
+                <div class="form-group">
+                    <label for="quantity">Количество:</label>
+                    <input type="number" id="quantity" name="quantity" min="1" required>
+                </div>
+                <div class="form-group">
+                    <label>Цвет:</label>
+                    <div class="color-options">
+                        <label><input type="radio" name="color" value="red">Белый</label>
+                        <label><input type="radio" name="color" value="green">Черный</label>
+                        <label><input type="radio" name="color" value="blue">На заказ</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="comment">Комментарий:</label>
+                    <textarea id="comment" name="comment" maxlength="2000"
+                        placeholder="Укажите цвет одежды на заказ"></textarea>
+                </div>
+                <button type="submit">Купить</button>
+                <button type="button" class="close-btn">Закрыть</button>
+            </form>
+        </div>
+        <script type="module" src="./index.js"></script>
+
+</body>
+
+</html>
