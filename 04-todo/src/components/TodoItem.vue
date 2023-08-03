@@ -1,11 +1,13 @@
 <template>
   <li>
-    <span v-bind:class="{ done: localTodo.completed }">
-      <input type="checkbox" :checked="localTodo.completed" v-on:change="updateCompleted" />
+    <span v-bind:class="{done: todo.completed}">
+      <!-- eslint-disable-next-line vue/no-mutating-props -->
+      <input type="checkbox" :checked="todo.completed ? true : false"  v-on:change="todo.completed = !todo.completed"/>
       <strong>{{ index + 1 }}</strong>
-      {{ localTodo.title }}
+      {{ todo.title }}
+
     </span>
-    <button class="rm" v-on:click="$emit('remove-todo', localTodo.id)">&times;</button>
+    <button class="rm" v-on:click="$emit('remove-todo', todo.id)">&times;</button>
   </li>
 </template>
 
@@ -16,23 +18,10 @@ export default {
       type: Object,
       required: true,
     },
-    index: Number,
-  },
-  data() {
-    return {
-      localTodo: { ...this.todo }, // Создаем копию пропса todo во внутреннем состоянии
-    };
-  },
-  methods: {
-    updateCompleted() {
-      this.localTodo.completed = !this.localTodo.completed;
-      // Вызываем событие, чтобы обновить значение в родительском компоненте
-      this.$emit('update-todo', this.localTodo);
-    },
+    index: Number
   },
 };
 </script>
-
 
 <style scoped>
 li {
