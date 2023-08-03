@@ -6,3 +6,7 @@
 
 [02-store](https://test-tasks-8vcr.vercel.app/) (Одностраничный магазин)
 * Стек: JavaScript, HTML, CSS.
+
+[04-todo](https://test-tasks-ocrd.vercel.app/) (Простое to-do приложение)
+* Стек: Vue.js, vue-router, HTML, CSS
+
