@@ -8,5 +8,5 @@
 * Стек: JavaScript, HTML, CSS.
 
 [04-todo](https://test-tasks-ocrd.vercel.app/) (Простое to-do приложение)
-* Стек: Vue.js, vue-router, HTML, CSS
+* Стек: Vue.js, vue-router, API, HTML, CSS.
 
