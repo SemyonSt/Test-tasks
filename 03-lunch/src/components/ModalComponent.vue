@@ -1,16 +1,15 @@
 <template>
   <div class="modal" tabindex="-1" @click.self="close" @keydown.esc="close">
     <div class="modal-content">
-      <!-- Здесь разместите контент вашего модального окна, включая поля, кнопки и т.д. -->
-      <div class="modal-text">Кафе: {{ cafeData.name }}.</div>
-      <div class="modal-text">Адрес: {{ cafeData.address }}.</div>
-      <div class="modal-text">Ориентир: {{ cafeData.landmark }}.</div>
-      <div class="modal-text">Кухня: {{ cafeData.cuisine }}.</div>
-      <div class="modal-text">Расстояние: {{ cafeData.distance }}м.</div>
-      <div class="modal-text">Сколько идти: {{ cafeData.time }} минут.</div>
+      <div class="modal-text">Кафе: {{ cafeData.name ? cafeData.name : 'Нет данных :(' }}.</div>
+      <div class="modal-text">Адрес: {{ cafeData.address ? cafeData.address : 'Нет данных :(' }}.</div>
+      <div class="modal-text">Ориентир: {{ cafeData.landmark ? cafeData.landmark : 'Нет данных :(' }}.</div>
+      <div class="modal-text">Кухня: {{ cafeData.cuisine ? cafeData.cuisine : 'Нет данных :(' }}.</div>
+      <div class="modal-text">Расстояние: {{ cafeData.distance ? `${cafeData.distance} м.` : 'Нет данных :(' }}.</div>
+      <div class="modal-text">Сколько идти: {{ cafeData.time ? `${cafeData.time} минут.` : 'Нет данных :(' }} </div>
       <div class="modal-text">Бизнесс ланч: {{ cafeData.business_lunch ? "Есть" : "Нет" }}.</div>
-      <div class="modal-text">Средний чек: {{ cafeData.price }}.</div>
-      <div v-if="cafeData.photo.lenth"  class="image-container">
+      <div class="modal-text">Средний чек: {{ cafeData.price ? cafeData.price : 'Нет данных :(' }}.</div>
+      <div v-if="cafeData.photo.length"  class="image-container">
         <img  :src="cafeData.photo" alt="Изображение кафе" class="cafe-image">
       </div>
       <div class="modal-buttons">
@@ -22,13 +21,7 @@
   
   <script>
 export default {
-  data() {
-    return {
-      cafe: "",
-      place: "",
-      destination: "",
-    };
-  },
+
   props: {
     cafeData: {
       type: Object,

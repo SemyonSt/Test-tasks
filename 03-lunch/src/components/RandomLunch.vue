@@ -1,16 +1,21 @@
 <template>
     <div class="random-lunch">
-        <a v-for="cafe of cafes" v-bind:key="cafe.id"> {{ cafe.name }}</a>
+      <p>Случайное число: {{ `${randomNumber} v` }}</p>
     </div>
-</template>
-
-<script>
-export default {
+    
+  </template>
+  
+  <script>
+  export default {
     props: {
-        cafes: {
-      type: Object,
-      required: true,
+      randomNumber: {
+        type: Number,
+        required: true,
+      },
     },
-    }
-}
-</script>
+    mounted() {
+    console.log('Props randomNumber:', this.randomNumber);
+    console.log('Props:', this);
+  },
+  };
+  </script>
