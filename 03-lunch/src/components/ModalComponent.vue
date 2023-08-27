@@ -1,19 +1,38 @@
 <template>
   <div class="modal" tabindex="-1" @click.self="close" @keydown.esc="close">
     <div class="modal-content">
-      <div class="modal-text">Кафе: {{ cafeData.name ? cafeData.name : 'Нет данных :(' }}.</div>
-      <div class="modal-text">Адрес: {{ cafeData.address ? cafeData.address : 'Нет данных :(' }}.</div>
-      <div class="modal-text">Ориентир: {{ cafeData.landmark ? cafeData.landmark : 'Нет данных :(' }}.</div>
-      <div class="modal-text">Кухня: {{ cafeData.cuisine ? cafeData.cuisine : 'Нет данных :(' }}.</div>
-      <div class="modal-text">Расстояние: {{ cafeData.distance ? `${cafeData.distance} м.` : 'Нет данных :(' }}.</div>
-      <div class="modal-text">Сколько идти: {{ cafeData.time ? `${cafeData.time} минут.` : 'Нет данных :(' }} </div>
-      <div class="modal-text">Бизнесс ланч: {{ cafeData.business_lunch ? "Есть" : "Нет" }}.</div>
-      <div class="modal-text">Средний чек: {{ cafeData.price ? cafeData.price : 'Нет данных :(' }}.</div>
-      <div v-if="cafeData.photo.length"  class="image-container">
-        <img  :src="cafeData.photo" alt="Изображение кафе" class="cafe-image">
+      <div class="modal-text">
+        Кафе: {{ cafeData.name ? cafeData.name : "Нет данных :(" }}.
+      </div>
+      <div class="modal-text">
+        Адрес: {{ cafeData.address ? cafeData.address : "Нет данных :(" }}.
+      </div>
+      <div class="modal-text">
+        Ориентир: {{ cafeData.landmark ? cafeData.landmark : "Нет данных :(" }}.
+      </div>
+      <div class="modal-text">
+        Кухня: {{ cafeData.cuisine ? cafeData.cuisine : "Нет данных :(" }}.
+      </div>
+      <div class="modal-text">
+        Расстояние:
+        {{ cafeData.distance ? `${cafeData.distance} м.` : "Нет данных :(" }}.
+      </div>
+      <div class="modal-text">
+        Сколько идти:
+        {{ cafeData.time ? `${cafeData.time} минут.` : "Нет данных :(" }}
+      </div>
+      <div class="modal-text">
+        Бизнесс ланч: {{ cafeData.business_lunch ? "Есть" : "Нет" }}.
+      </div>
+      <div class="modal-text">
+        Средний чек: {{ cafeData.price ? cafeData.price : "Нет данных :(" }}.
+      </div>
+      <div v-if="cafeData.photo.length" class="image-container">
+        <img :src="cafeData.photo" alt="Изображение кафе" class="cafe-image" />
       </div>
       <div class="modal-buttons">
-        <button class="close-button" @click="close">Закрыть</button>
+        <button class="btn" @click="close">Закрыть</button>
+        <button class="btn" @click="shareCafe">Поделиться</button>
       </div>
     </div>
   </div>
@@ -21,7 +40,6 @@
   
   <script>
 export default {
-
   props: {
     cafeData: {
       type: Object,
@@ -31,6 +49,18 @@ export default {
   methods: {
     close() {
       this.$emit("close");
+    },
+    shareCafe() {
+      const cafeName = this.cafeData.name || "Кафе";
+      const cafeAddress = this.cafeData.address || "Адрес неизвестен";
+
+      const message = `Я выбрал(а) кафе "${cafeName}"! Адрес: ${cafeAddress}.`;
+
+      const whatsappURL = `https://api.whatsapp.com/send?text=${encodeURIComponent(
+        message
+      )}`;
+
+      window.open(whatsappURL, "_blank");
     },
   },
   mounted() {
@@ -67,19 +97,6 @@ export default {
 .modal-buttons {
   display: flex;
   justify-content: center;
-}
-
-.close-button {
-  text-align: center;
-  padding: 10px 20px;
-  background-color: #ccc;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.close-button:hover {
-  background-color: #999;
 }
 
 .image-container {

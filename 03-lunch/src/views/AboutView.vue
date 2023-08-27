@@ -25,19 +25,18 @@ export default {
     };
   },
   computed: mapGetters(['allCafes']),
+
   emits: ['close'],
   components: {
     CaffeList,
     ModalComponent,
   },
-  mounted() {
-      this.$store.dispatch('fetchCafes')
-    },
+
   methods: {
     openModal(data) {
       this.showModal = true;
       this.cafeData = data;
-      console.log(this.cafeData)
+      console.log("DATACAFE",this.cafeData)
     },
     goToAbout() {
       this.$router.push('/about');

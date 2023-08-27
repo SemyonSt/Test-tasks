@@ -3,6 +3,18 @@
   <router-view/>
 </template>
 
+<script>
+
+export default {
+  name: 'App',
+
+    mounted() {
+      this.$store.dispatch('fetchCafes')
+    },
+
+}
+</script>
+
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;

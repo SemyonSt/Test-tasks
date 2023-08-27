@@ -9,57 +9,55 @@
       <button class="btn" @click="generateRandomNumber" >Выбрать наугад</button>
     </div>
 
-    <RandomLunch v-if="showRandomLunch" :randomNumber="randomNumber" />
-    <!-- <ModalComponent v-if="showModal" v-bind:cafeData="cafeData"  @close="showModal = false" /> -->
+    <RandomLunch v-if="showRandomLunch"  v-bind:cafeData="cafeData" @open-modal="openModal"/>
+    <ModalComponent v-if="showModal" v-bind:cafeData="cafeData[0]"  @close="showModal = false" />
   </div>
 </template>
 
 <script>
 import RandomLunch from "@/components/RandomLunch.vue";
-// import CaffeList from '@/components/CaffeList.vue';
+import {mapGetters} from 'vuex'
 
-// import ModalComponent from '@/components/ModalComponent.vue';
+
+import ModalComponent from '@/components/ModalComponent.vue';
 
 export default {
   name: "App",
   data() {
     return {
-      cafes: [],
+
       showModal: false,
       cafeData: [],
       showRandomLunch: false,
-      randomNumber: null,
+
     };
   },
   emits: ['close'],
+  computed: mapGetters(['allCafes']),
+
   components: {
     RandomLunch,
     // CaffeList,
-    // ModalComponent,
+    ModalComponent,
   },
   methods: {
-    onClick() {
-      console.log('Hello')
-      fetch("https://bandaumnikov.ru/api/test/site/get-index")
-      .then((response) => response.json())
-      .then((json) => {
-        console.log('JSIN', json.data)
-        this.cafes = json.data;
 
-      });
-    },
     openModal(data) {
       this.showModal = true;
       this.cafeData = data;
-      console.log(this.cafeData)
+      console.log('hello')
     },
     goToAbout() {
       this.$router.push('/about');
     },
     generateRandomNumber() {
-      console.log('LALALLA',  this.randomNumber)
-      this.randomNumber = Math.floor(Math.random() * 100); // Генерируйте рандомное число
+      const randomNumber = Math.floor((Math.random() * 23) + 1); // Генерируйте рандомное число
+      
+      const selectedCafe = this.allCafes.filter(cafe => cafe.id === randomNumber);
+
+      this.cafeData = selectedCafe
       this.showRandomLunch = true;
+      
     },
   },
 };
@@ -90,7 +88,7 @@ export default {
   text-decoration: none;
   color: #444;
   background-color: #fff;
-  box-shadow: 0 4px 6px rgb(65 132 144 / 10%), 0 1px 3px rgb(0 0 0 / 8%);
+  box-shadow: 0 4px 6px rgb(65 132 144 / 10%), 0 1px 3px rgb(0 0 0 / 20%);
   cursor: pointer;
   user-select: none;
   appearance: none;
@@ -104,7 +102,7 @@ export default {
 }
 .btn:hover {
   transition: all 0.2s;
-  box-shadow: 0 7px 14px rgb(65 132 144 / 10%), 0 3px 6px rgb(0 0 0 / 8%);
+  box-shadow: 0 7px 14px rgb(65 132 144 / 20%), 0 3px 6px rgb(0 0 0 / 50%);
 }
 .btn:active {
   background-color: #808080;
