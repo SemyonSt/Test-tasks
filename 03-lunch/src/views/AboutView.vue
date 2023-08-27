@@ -4,7 +4,7 @@
     <hr>
     <router-link to="/">Назад</router-link>
 
-    <CaffeList v-bind:cafes="cafes" @open-modal="openModal"/>
+    <CaffeList v-bind:cafes="allCafes" @open-modal="openModal"/>
     <ModalComponent v-if="showModal" v-bind:cafeData="cafeData"  @close="showModal = false" />
   </div>
 </template>
@@ -13,44 +13,27 @@
 <script>
 import CaffeList from '@/components/CaffeList.vue';
 import ModalComponent from '@/components/ModalComponent.vue';
+import {mapGetters} from 'vuex'
 
 export default {
   name: "App",
   data() {
     return {
-      cafes: [],
+
       showModal: false,
       cafeData: []
     };
   },
+  computed: mapGetters(['allCafes']),
   emits: ['close'],
   components: {
     CaffeList,
     ModalComponent,
   },
   mounted() {
-      console.log('Hello')
-      fetch("https://bandaumnikov.ru/api/test/site/get-index")
-      .then((response) => response.json())
-      .then((json) => {
-        console.log('JSIN', json.data)
-        this.cafes = json.data;
-      })
-      .catch(() => {
-        console.log('Error')
-      })
+      this.$store.dispatch('fetchCafes')
     },
   methods: {
-    // onClick() {
-    //   console.log('Hello')
-    //   fetch("https://bandaumnikov.ru/api/test/site/get-index")
-    //   .then((response) => response.json())
-    //   .then((json) => {
-    //     console.log('JSIN', json.data)
-    //     this.cafes = json.data;
-
-    //   });
-    // },
     openModal(data) {
       this.showModal = true;
       this.cafeData = data;

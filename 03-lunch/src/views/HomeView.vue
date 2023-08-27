@@ -10,14 +10,14 @@
     </div>
 
     <RandomLunch v-if="showRandomLunch" :randomNumber="randomNumber" />
-    <!-- <CaffeList v-bind:cafes="cafes" @open-modal="openModal"/>
-    <ModalComponent v-if="showModal" v-bind:cafeData="cafeData"  @close="showModal = false" /> -->
+    <!-- <ModalComponent v-if="showModal" v-bind:cafeData="cafeData"  @close="showModal = false" /> -->
   </div>
 </template>
 
 <script>
 import RandomLunch from "@/components/RandomLunch.vue";
 // import CaffeList from '@/components/CaffeList.vue';
+
 // import ModalComponent from '@/components/ModalComponent.vue';
 
 export default {
