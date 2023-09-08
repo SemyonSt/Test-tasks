@@ -57,7 +57,10 @@ p {
   }
   p {
     text-align: center;
-    max-width: 200px;
+    max-width: 100%;
+  }
+  .btn {
+    width: 100%;
   }
 }
 </style>
