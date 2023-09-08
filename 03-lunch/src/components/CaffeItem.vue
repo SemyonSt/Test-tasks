@@ -1,7 +1,7 @@
 <template>
   <span>
     <li>
-      {{ cafe.name }}
+      <p>{{ cafe.name }}</p>
       <button class="btn" @click="openModal">Подробнее</button>
     </li>
   </span>
@@ -17,7 +17,7 @@ export default {
   },
   methods: {
     openModal() {
-      this.$emit('open-modal', this.cafe); // Передаем объект cafe в событии
+      this.$emit("open-modal", this.cafe); // Передаем объект cafe в событии
     },
   },
 };
@@ -29,7 +29,6 @@ export default {
 span {
   display: flex;
   justify-content: center;
-  
 }
 ul {
   padding-left: 0;
@@ -45,7 +44,20 @@ li {
   border-radius: 5px;
   width: 50rem;
 }
-.btn {
-  margin: 0px;
+p {
+  text-align: left;
+  max-width: 200px;
+}
+
+@media screen and (max-width: 450px) {
+  li {
+    justify-content: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
+  p {
+    text-align: center;
+    max-width: 200px;
+  }
 }
 </style>
