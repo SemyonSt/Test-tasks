@@ -29,6 +29,10 @@ export default {
 span {
   display: flex;
   justify-content: center;
+  
+}
+ul {
+  padding-left: 0;
 }
 li {
   border: 1px solid #ccc;
@@ -42,7 +46,6 @@ li {
   width: 50rem;
 }
 .btn {
-    align-items: center;
-    justify-content: center;
+  margin: 0px;
 }
 </style>

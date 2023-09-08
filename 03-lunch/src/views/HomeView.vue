@@ -6,34 +6,41 @@
       <button class="btn" @click="goToAbout">Посмотреть все варианты</button>
     </div>
     <div>
-      <button class="btn" @click="generateRandomNumber" >Выбрать наугад</button>
+      <button class="btn" @click="generateRandomCafe">
+        {{ showRandomLunch ? "Выбрать еще раз" : "Выбрать наугад" }}
+      </button>
     </div>
 
-    <RandomLunch v-if="showRandomLunch"  v-bind:cafeData="cafeData" @open-modal="openModal"/>
-    <ModalComponent v-if="showModal" v-bind:cafeData="cafeData[0]"  @close="showModal = false" />
+    <RandomLunch
+      v-if="showRandomLunch"
+      v-bind:cafeData="cafeData"
+      @open-modal="openModal"
+    />
+    <ModalComponent
+      v-if="showModal"
+      v-bind:cafeData="cafeData[0]"
+      @close="showModal = false"
+    />
   </div>
 </template>
 
 <script>
 import RandomLunch from "@/components/RandomLunch.vue";
-import {mapGetters} from 'vuex'
+import { mapGetters } from "vuex";
 
-
-import ModalComponent from '@/components/ModalComponent.vue';
+import ModalComponent from "@/components/ModalComponent.vue";
 
 export default {
   name: "App",
   data() {
     return {
-
       showModal: false,
       cafeData: [],
       showRandomLunch: false,
-
     };
   },
-  emits: ['close'],
-  computed: mapGetters(['allCafes']),
+  emits: ["close"],
+  computed: mapGetters(["allCafes"]),
 
   components: {
     RandomLunch,
@@ -41,23 +48,23 @@ export default {
     ModalComponent,
   },
   methods: {
-
     openModal(data) {
       this.showModal = true;
       this.cafeData = data;
-      console.log('hello')
     },
     goToAbout() {
-      this.$router.push('/about');
+      this.$router.push("/about");
     },
-    generateRandomNumber() {
-      const randomNumber = Math.floor((Math.random() * 23) + 1); // Генерируйте рандомное число
-      
-      const selectedCafe = this.allCafes.filter(cafe => cafe.id === randomNumber);
+    generateRandomCafe() {
+      const randomNumber = Math.floor(Math.random() * 23 + 1);
 
-      this.cafeData = selectedCafe
+      const selectedCafe = this.allCafes.filter(
+        (cafe) => cafe.id === randomNumber
+      );
+      console.log('lalal', selectedCafe)
+
+      this.cafeData = selectedCafe;
       this.showRandomLunch = true;
-      
     },
   },
 };
@@ -77,7 +84,7 @@ export default {
   display: inline-block;
   box-sizing: border-box;
   padding: 0 25px;
-  margin: 0 15px 15px 0;
+  margin: 10px;
   outline: none;
   border: 1px solid #fff;
   border-radius: 50px;

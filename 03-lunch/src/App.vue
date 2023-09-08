@@ -1,6 +1,6 @@
 <template>
-  
-  <router-view/>
+  <div class="background-container">  <router-view/></div>
+
 </template>
 
 <script>

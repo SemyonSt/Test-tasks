@@ -2,8 +2,9 @@
   <div class="modal" tabindex="-1" @click.self="close" @keydown.esc="close">
     <div class="modal-content">
       <div class="modal-text">
-        Кафе: {{ cafeData.name ? cafeData.name : "Нет данных :(" }}.
+       <h3>Кафе: {{ cafeData.name ? cafeData.name : "Нет данных :(" }}.</h3> 
       </div>
+      <hr>
       <div class="modal-text">
         Адрес: {{ cafeData.address ? cafeData.address : "Нет данных :(" }}.
       </div>
@@ -15,7 +16,7 @@
       </div>
       <div class="modal-text">
         Расстояние:
-        {{ cafeData.distance ? `${cafeData.distance} м.` : "Нет данных :(" }}.
+        {{ cafeData.distance ? `${cafeData.distance} м.` : "Нет данных :(" }}
       </div>
       <div class="modal-text">
         Сколько идти:
